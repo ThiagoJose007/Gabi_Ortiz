@@ -3622,10 +3622,10 @@ function InCioDesktop(_p = {}) {
     style: {
       position: "relative",
       borderRadius: 6,
-      borderTop: "1.500px solid rgba(255,255,255,0.4)",
-      borderRight: "1.500px solid rgba(255,255,255,0.4)",
-      borderBottom: "4px solid rgba(255,255,255,0.4)",
-      borderLeft: "1.500px solid rgba(255,255,255,0.4)",
+      borderTop: "1.500px solid var(--color-scheme-1-border)",
+      borderRight: "1.500px solid var(--color-scheme-1-border)",
+      borderBottom: "4px solid var(--color-scheme-1-border)",
+      borderLeft: "1.500px solid var(--color-scheme-1-border)",
       display: "flex",
       flexDirection: "row",
       gap: 8,
@@ -3642,7 +3642,7 @@ function InCioDesktop(_p = {}) {
       fontWeight: 500,
       fontSize: 18,
       lineHeight: 1.5,
-      color: "rgba(255,255,255,0.4)",
+      color: "var(--color-neutral-darkest)",
       flexShrink: 0
     }
   }, "WhatsApp")), /*#__PURE__*/React.createElement(Button, {
@@ -6493,95 +6493,52 @@ function InCioDesktop(_p = {}) {
       position: "relative",
       width: 400,
       display: "flex",
-      flexDirection: "column",
-      gap: 24,
-      alignItems: "flex-start",
-      flexShrink: 0
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      gap: 16,
-      alignItems: "flex-start",
-      flexShrink: 0,
-      alignSelf: "stretch"
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      position: "relative",
-      fontFamily: "\"DM Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
-      fontWeight: 600,
-      fontSize: 18,
-      lineHeight: 1.5,
-      color: "var(--color-scheme-1-text)",
-      flexShrink: 0,
-      alignSelf: "stretch"
-    }
-  }, "Boletim"), /*#__PURE__*/React.createElement("span", {
-    style: {
-      position: "relative",
-      fontFamily: "\"DM Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
-      fontWeight: 400,
-      fontSize: 18,
-      lineHeight: 1.5,
-      color: "var(--color-scheme-1-text)",
-      flexShrink: 0,
-      alignSelf: "stretch"
-    }
-  }, "Receba not\xEDcias sobre finan\xE7as com prop\xF3sito e desenvolvimento territorial direto na sua caixa de entrada.")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      gap: 12,
-      alignItems: "flex-start",
-      flexShrink: 0,
-      alignSelf: "stretch"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "relative",
-      display: "flex",
       flexDirection: "row",
       gap: 16,
-      alignItems: "flex-start",
-      flexShrink: 0,
-      alignSelf: "stretch"
-    }
-  }, /*#__PURE__*/React.createElement(TextInput, {
-    style: {
-      position: "relative",
-      flexGrow: 1,
-      width: "auto"
-    },
-    text1: "Seu e-mail",
-    type: "default",
-    alternate: false
-  }), /*#__PURE__*/React.createElement(Button, {
-    style: {
-      position: "relative",
-      width: 126,
+      alignItems: "center",
       flexShrink: 0
-    },
-    text1: "Inscrever",
-    style2: "secondary",
-    small: false,
-    iconPosition: "no icon",
-    alternate: false
-  })), /*#__PURE__*/React.createElement("span", {
+    }
+  }, /*#__PURE__*/React.createElement(Facebook, {
     style: {
       position: "relative",
-      fontFamily: "\"DM Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
-      fontWeight: 400,
-      fontSize: 12,
-      lineHeight: 1.5,
-      color: "var(--color-scheme-1-text)",
+      width: 24,
+      height: 24,
       flexShrink: 0,
-      alignSelf: "stretch"
+      color: "rgb(0,0,0)"
     }
-  }, "Ao se inscrever, voc\xEA concorda com nossa pol\xEDtica de privacidade e autoriza o envio de conte\xFAdo.")))), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement(Instagram, {
+    style: {
+      position: "relative",
+      width: 24,
+      height: 24,
+      flexShrink: 0,
+      color: "rgb(0,0,0)"
+    }
+  }), /*#__PURE__*/React.createElement(X, {
+    style: {
+      position: "relative",
+      width: 24,
+      height: 24,
+      flexShrink: 0,
+      color: "rgb(0,0,0)"
+    }
+  }), /*#__PURE__*/React.createElement(LinkedIn, {
+    style: {
+      position: "relative",
+      width: 24,
+      height: 24,
+      flexShrink: 0,
+      color: "rgb(0,0,0)"
+    }
+  }), /*#__PURE__*/React.createElement(Youtube, {
+    style: {
+      position: "relative",
+      width: 24,
+      height: 24,
+      flexShrink: 0,
+      color: "rgb(0,0,0)"
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "relative",
       display: "flex",
@@ -6669,56 +6626,7 @@ function InCioDesktop(_p = {}) {
       textDecoration: "underline",
       flexShrink: 0
     }
-  }, "Configura\xE7\xF5es de cookies")), /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "relative",
-      display: "flex",
-      flexDirection: "row",
-      gap: 12,
-      alignItems: "flex-start",
-      flexShrink: 0
-    }
-  }, /*#__PURE__*/React.createElement(Facebook, {
-    style: {
-      position: "relative",
-      width: 24,
-      height: 24,
-      flexShrink: 0,
-      color: "rgb(0,0,0)"
-    }
-  }), /*#__PURE__*/React.createElement(Instagram, {
-    style: {
-      position: "relative",
-      width: 24,
-      height: 24,
-      flexShrink: 0,
-      color: "rgb(0,0,0)"
-    }
-  }), /*#__PURE__*/React.createElement(X, {
-    style: {
-      position: "relative",
-      width: 24,
-      height: 24,
-      flexShrink: 0,
-      color: "rgb(0,0,0)"
-    }
-  }), /*#__PURE__*/React.createElement(LinkedIn, {
-    style: {
-      position: "relative",
-      width: 24,
-      height: 24,
-      flexShrink: 0,
-      color: "rgb(0,0,0)"
-    }
-  }), /*#__PURE__*/React.createElement(Youtube, {
-    style: {
-      position: "relative",
-      width: 24,
-      height: 24,
-      flexShrink: 0,
-      color: "rgb(0,0,0)"
-    }
-  })))))));
+  }, "Configura\xE7\xF5es de cookies")))))));
 }
 
 // Globals for scripts loaded after this file.
