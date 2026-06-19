@@ -1,0 +1,182 @@
+/* Shared stylesheet for static inner pages (Sobre, Áreas de Atuação, Portfólio).
+   Mirrors the palette, type system and components used on the homepage (index.html / fig/Components.bundle.js). */
+
+:root {
+  --sand: #F7F3EA;
+  --sand-card: #FFFFFF;
+  --ink: #2D3B2E;
+  --ink-soft: #55604F;
+  --green-dark: #23311F;
+  --green-card-dark: #2C3D26;
+  --gold: #C28E3E;
+  --gold-dark: #9A6E26;
+  --cta-text: #2A2208;
+  --border: #D8D4C4;
+  --border-dark: rgba(247,243,234,0.18);
+  --maxw: 1280px;
+  --pad: clamp(20px, 5vw, 64px);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--sand);
+  color: var(--ink);
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+h1, h2, h3, .display {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: inherit;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: var(--sand);
+  border-bottom: 1px solid var(--border);
+}
+.navbar .wrap {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.navbar-left { display: flex; align-items: center; gap: 32px; }
+.logo { display: flex; align-items: center; width: 84px; height: 36px; color: var(--ink); flex-shrink: 0; }
+.logo svg { width: 84px; height: 36px; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-size: 18px; color: var(--ink); }
+.nav-links a:hover { color: var(--gold-dark); }
+.nav-links a.active { color: var(--gold-dark); font-weight: 600; }
+.navbar-actions { display: flex; align-items: center; gap: 16px; }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-sm { padding: 8px 20px; font-size: 18px; }
+.btn-primary {
+  background: var(--gold);
+  color: var(--cta-text);
+  border-top: 1.5px solid var(--gold-dark);
+  border-right: 1.5px solid var(--gold-dark);
+  border-left: 1.5px solid var(--gold-dark);
+  border-bottom: 4px solid var(--gold-dark);
+}
+.btn-primary:hover { filter: brightness(0.97); }
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border-top: 1.5px solid var(--border);
+  border-right: 1.5px solid var(--border);
+  border-left: 1.5px solid var(--border);
+  border-bottom: 4px solid var(--border);
+}
+.btn-link { background: none; border: none; padding: 0; color: var(--ink); font-weight: 500; }
+.btn-link .chevron { width: 16px; height: 16px; }
+
+/* on dark sections, outline/link buttons use sand tones */
+.on-dark .btn-outline { color: var(--sand); border-color: var(--border-dark); }
+.on-dark .nav-links a { color: var(--sand); }
+
+/* ===== Sections ===== */
+.section {
+  padding: clamp(64px, 8vw, 112px) 0;
+}
+.section.on-dark { background: var(--green-dark); color: var(--sand); }
+.section-head {
+  max-width: 768px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.eyebrow {
+  font-size: 16px;
+  font-weight: 600;
+  color: inherit;
+  margin: 0;
+}
+.heading-1 { font-size: clamp(40px, 6vw, 84px); }
+.heading-2 { font-size: clamp(34px, 5vw, 60px); }
+.heading-4 { font-size: clamp(24px, 3vw, 32px); }
+.lead { font-size: 20px; color: inherit; opacity: 0.9; margin: 0; }
+
+/* ===== Cards / grids ===== */
+.grid {
+  display: grid;
+  gap: 32px;
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--sand-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.on-dark .card { background: var(--green-card-dark); border-color: var(--border-dark); }
+.card .icon { width: 40px; height: 40px; color: var(--gold-dark); }
+.on-dark .card .icon { color: var(--gold); }
+.card h3 { font-size: 22px; }
+.card p { margin: 0; font-size: 16px; color: var(--ink-soft); }
+.on-dark .card p { color: rgba(247,243,234,0.78); }
+
+.stat { display: flex; flex-direction: column; gap: 8px; text-align: center; }
+.stat .num { font-family: "Fraunces", serif; font-weight: 700; font-size: clamp(40px, 5vw, 56px); color: var(--gold-dark); }
+.on-dark .stat .num { color: var(--gold); }
+.stat .label { font-size: 16px; color: var(--ink-soft); }
+.on-dark .stat .label { color: rgba(247,243,234,0.78); }
+
+.divider { height: 1px; background: var(--border); border: none; margin: 0; }
+.on-dark .divider { background: var(--border-dark); }
+
+/* ===== Footer ===== */
+.footer { background: var(--green-dark); color: var(--sand); padding: 80px 0 40px; }
+.footer .wrap { display: flex; flex-direction: column; gap: 64px; }
+.footer-top { display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between; }
+.footer-col { flex: 1 1 200px; min-width: 180px; }
+.footer-col h4 { font-family: "DM Sans", sans-serif; font-weight: 600; font-size: 18px; margin: 0 0 16px; }
+.footer-col a { display: block; padding: 8px 0; font-size: 16px; color: var(--sand); }
+.footer-col a:hover { color: var(--gold); }
+.footer-social { flex: 1 1 200px; min-width: 180px; display: flex; align-items: flex-start; gap: 16px; }
+.footer-social a { color: var(--sand); width: 24px; height: 24px; }
+.footer-social svg { width: 24px; height: 24px; }
+.footer-bottom { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
+.footer-bottom-links { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; font-size: 16px; }
+.footer-bottom-links a { text-decoration: underline; }
+.footer-copy { font-size: 16px; }

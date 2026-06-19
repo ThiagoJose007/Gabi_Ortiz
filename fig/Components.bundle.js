@@ -3551,14 +3551,17 @@ function InCioDesktop(_p = {}) {
       alignItems: "center",
       flexShrink: 0
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "sobre.html",
     style: {
       position: "relative",
       display: "flex",
       flexDirection: "row",
       gap: 10,
       alignItems: "flex-start",
-      flexShrink: 0
+      flexShrink: 0,
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -3570,14 +3573,17 @@ function InCioDesktop(_p = {}) {
       color: "var(--color-scheme-1-text)",
       flexShrink: 0
     }
-  }, "Sobre")), /*#__PURE__*/React.createElement("div", {
+  }, "Sobre")), /*#__PURE__*/React.createElement("a", {
+    href: "areas-de-atuacao.html",
     style: {
       position: "relative",
       display: "flex",
       flexDirection: "row",
       gap: 10,
       alignItems: "flex-start",
-      flexShrink: 0
+      flexShrink: 0,
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -3589,14 +3595,17 @@ function InCioDesktop(_p = {}) {
       color: "var(--color-scheme-1-text)",
       flexShrink: 0
     }
-  }, "\xC1reas de atua\xE7\xE3o")), /*#__PURE__*/React.createElement("div", {
+  }, "\xC1reas de atua\xE7\xE3o")), /*#__PURE__*/React.createElement("a", {
+    href: "portfolio.html",
     style: {
       position: "relative",
       display: "flex",
       flexDirection: "row",
       gap: 10,
       alignItems: "flex-start",
-      flexShrink: 0
+      flexShrink: 0,
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -3618,7 +3627,10 @@ function InCioDesktop(_p = {}) {
       alignItems: "center",
       flexShrink: 0
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://wa.me/5562999570087",
+    target: "_blank",
+    rel: "noopener",
     style: {
       position: "relative",
       borderRadius: 6,
@@ -3633,7 +3645,9 @@ function InCioDesktop(_p = {}) {
       justifyContent: "center",
       alignItems: "center",
       boxSizing: "border-box",
-      flexShrink: 0
+      flexShrink: 0,
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -6113,7 +6127,8 @@ function InCioDesktop(_p = {}) {
       flexShrink: 0,
       alignSelf: "stretch"
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "index.html",
     style: {
       position: "relative",
       display: "flex",
@@ -6122,7 +6137,9 @@ function InCioDesktop(_p = {}) {
       alignItems: "flex-start",
       boxSizing: "border-box",
       flexShrink: 0,
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -6134,7 +6151,8 @@ function InCioDesktop(_p = {}) {
       color: "var(--color-scheme-1-text)",
       flexGrow: 1
     }
-  }, "In\xEDcio")), /*#__PURE__*/React.createElement("div", {
+  }, "In\xEDcio")), /*#__PURE__*/React.createElement("a", {
+    href: "sobre.html",
     style: {
       position: "relative",
       display: "flex",
@@ -6143,7 +6161,9 @@ function InCioDesktop(_p = {}) {
       alignItems: "flex-start",
       boxSizing: "border-box",
       flexShrink: 0,
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -6155,7 +6175,8 @@ function InCioDesktop(_p = {}) {
       color: "var(--color-scheme-1-text)",
       flexGrow: 1
     }
-  }, "Sobre")), /*#__PURE__*/React.createElement("div", {
+  }, "Sobre")), /*#__PURE__*/React.createElement("a", {
+    href: "areas-de-atuacao.html",
     style: {
       position: "relative",
       display: "flex",
@@ -6164,7 +6185,9 @@ function InCioDesktop(_p = {}) {
       alignItems: "flex-start",
       boxSizing: "border-box",
       flexShrink: 0,
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -6176,7 +6199,8 @@ function InCioDesktop(_p = {}) {
       color: "var(--color-scheme-1-text)",
       flexGrow: 1
     }
-  }, "\xC1reas de atua\xE7\xE3o")), /*#__PURE__*/React.createElement("div", {
+  }, "\xC1reas de atua\xE7\xE3o")), /*#__PURE__*/React.createElement("a", {
+    href: "portfolio.html",
     style: {
       position: "relative",
       display: "flex",
@@ -6185,7 +6209,9 @@ function InCioDesktop(_p = {}) {
       alignItems: "flex-start",
       boxSizing: "border-box",
       flexShrink: 0,
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -6248,7 +6274,8 @@ function InCioDesktop(_p = {}) {
       flexShrink: 0,
       alignSelf: "stretch"
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "sobre.html",
     style: {
       position: "relative",
       display: "flex",
@@ -6257,7 +6284,9 @@ function InCioDesktop(_p = {}) {
       alignItems: "flex-start",
       boxSizing: "border-box",
       flexShrink: 0,
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -6269,7 +6298,8 @@ function InCioDesktop(_p = {}) {
       color: "var(--color-scheme-1-text)",
       flexGrow: 1
     }
-  }, "Sobre")), /*#__PURE__*/React.createElement("div", {
+  }, "Sobre")), /*#__PURE__*/React.createElement("a", {
+    href: "areas-de-atuacao.html",
     style: {
       position: "relative",
       display: "flex",
@@ -6278,7 +6308,9 @@ function InCioDesktop(_p = {}) {
       alignItems: "flex-start",
       boxSizing: "border-box",
       flexShrink: 0,
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
@@ -6290,7 +6322,8 @@ function InCioDesktop(_p = {}) {
       color: "var(--color-scheme-1-text)",
       flexGrow: 1
     }
-  }, "\xC1reas de atua\xE7\xE3o")), /*#__PURE__*/React.createElement("div", {
+  }, "\xC1reas de atua\xE7\xE3o")), /*#__PURE__*/React.createElement("a", {
+    href: "portfolio.html",
     style: {
       position: "relative",
       display: "flex",
@@ -6299,7 +6332,9 @@ function InCioDesktop(_p = {}) {
       alignItems: "flex-start",
       boxSizing: "border-box",
       flexShrink: 0,
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      textDecoration: "none",
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
