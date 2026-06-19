@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gabi Ortiz — Finanças com propósito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+<script src="image-slot.js"></script>
+<style>
+  :root {
+    --sand: #F7F3EA;
+    --sand-2: #FCFAF4;
+    --sand-3: #EFE9DA;
+    --ink: #2D3B2E;
+    --ink-soft: #55604F;
+    --green: #4A6B4D;
+    --green-dark: #23311F;
+    --gold: #C28E3E;
+    --gold-deep: #A8742B;
+    --terra: #B5562C;
+    --line: #D8D4C4;
+    --line-dark: rgba(247,243,234,0.16);
+    --accent: var(--gold);
+    --accent-deep: var(--gold-deep);
+    --maxw: 1200px;
+    --pad: clamp(20px, 5vw, 64px);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--sand);
+    color: var(--ink);
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+  h1, h2, h3, .display {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .eyebrow {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 22px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 26px; height: 1.5px;
+    background: var(--accent);
+    display: inline-block;
+  }
+  section.on-dark .eyebrow { color: var(--gold); }
+  section.on-dark .eyebrow::before { background: var(--gold); }
+
+  .section-title {
+    font-size: clamp(34px, 4.6vw, 56px);
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+    max-width: 16ch;
+  }
+
+  p { text-wrap: pretty; }
+  .lead { font-size: clamp(18px, 2vw, 21px); color: var(--ink-soft); line-height: 1.62; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: "DM Sans", sans-serif; font-weight: 600; font-size: 15px;
+    padding: 14px 24px; border-radius: 999px;
+    text-decoration: none; cursor: pointer; border: 1.5px solid transparent;
+    transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-primary { background: var(--accent); color: #2A2208; }
+  .btn-primary:hover { background: var(--accent-deep); color: #fff; transform: translateY(-1px); }
+  .btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
+  section.on-dark .btn-ghost { border-color: var(--line-dark); color: var(--sand); }
+  section.on-dark .btn-ghost:hover { border-color: var(--sand); }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(247,243,234,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px; }
+  .brand { font-family: "Fraunces", serif; font-weight: 600; font-size: 23px; letter-spacing: -0.02em; text-decoration: none; color: var(--ink); }
+  .brand span { color: var(--accent-deep); }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--ink-soft); transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { display: flex; align-items: center; gap: 14px; }
+
+  /* ---------- Sobre ---------- */
+  .sobre { padding: clamp(64px, 9vw, 120px) 0 clamp(48px, 7vw, 96px); }
+  .sobre-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(36px, 5vw, 76px); align-items: center; }
+  .sobre h2 { font-size: clamp(30px, 3.6vw, 46px); text-transform: none; letter-spacing: -0.02em; max-width: 16ch; margin-bottom: 24px; }
+  .sobre .lead + .lead { margin-top: 18px; }
+  .portrait { position: relative; }
+  .portrait image-slot { width: 100%; aspect-ratio: 4/5; box-shadow: 0 30px 60px -30px rgba(35,49,31,0.5); }
+  .portrait::after {
+    content: ""; position: absolute; inset: 18px -18px -18px 18px; z-index: -1;
+    border: 1.5px solid var(--accent); border-radius: 6px;
+  }
+
+  /* ---------- Stats band ---------- */
+  .stats { background: var(--green-dark); color: var(--sand); }
+  .stats .wrap { padding-top: clamp(48px, 6vw, 76px); padding-bottom: clamp(48px, 6vw, 76px); }
+  .stats-head { color: var(--gold); font-weight: 600; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 38px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .stat { padding: 4px 28px; border-left: 1px solid var(--line-dark); }
+  .stat:first-child { padding-left: 0; border-left: none; }
+  .stat .num { font-family: "Fraunces", serif; font-weight: 600; font-size: clamp(46px, 5.5vw, 68px); line-height: 1; color: #fff; letter-spacing: -0.02em; }
+  .stat .num em { color: var(--gold); font-style: normal; }
+  .stat .lbl { margin: 16px 0 0; font-size: 15px; line-height: 1.45; color: rgba(247,243,234,0.74); max-width: 22ch; }
+
+  /* ---------- Trajetória ---------- */
+  .traj { padding: clamp(64px, 9vw, 120px) 0; }
+  .traj-head { max-width: 760px; margin-bottom: clamp(40px, 5vw, 64px); }
+  .traj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(32px, 4vw, 56px) clamp(40px, 6vw, 80px); }
+  .phase { border-top: 1.5px solid var(--line); padding-top: 26px; }
+  .phase h3 { font-size: 23px; letter-spacing: -0.01em; margin-bottom: 12px; display: flex; align-items: baseline; gap: 14px; }
+  .phase h3 .ix { font-size: 14px; font-family: "DM Sans", sans-serif; font-weight: 600; color: var(--accent-deep); letter-spacing: 0.04em; }
+  .phase p { margin: 0; color: var(--ink-soft); font-size: 16px; }
+  .phase .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .phase .tags span { font-size: 12.5px; font-weight: 500; color: var(--green); background: var(--sand-3); padding: 5px 11px; border-radius: 999px; }
+
+  .quote-band { background: var(--sand-3); }
+  .quote-band .wrap { padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); text-align: center; }
+  .quote-band blockquote {
+    margin: 0 auto; max-width: 20ch;
+    font-family: "Fraunces", serif; font-style: italic; font-weight: 400;
+    font-size: clamp(26px, 3.6vw, 42px); line-height: 1.22; color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .quote-band blockquote .mark { color: var(--accent); font-style: normal; }
+  .quote-band .who { margin-top: 28px; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+
+  /* ---------- Áreas ---------- */
+  .areas { padding: clamp(64px, 9vw, 120px) 0; background: var(--sand-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .areas-head { max-width: 820px; margin-bottom: clamp(40px, 5vw, 60px); }
+  .areas-head .lead { margin-top: 20px; }
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card {
+    background: var(--sand); border: 1px solid var(--line); border-radius: 14px;
+    padding: 30px 28px 32px; display: flex; flex-direction: column;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 22px 40px -28px rgba(35,49,31,0.4); border-color: var(--green); }
+  .card .ico { width: 46px; height: 46px; border-radius: 12px; background: var(--sand-3); color: var(--green); display: grid; place-items: center; margin-bottom: 22px; }
+  .card .ico svg { width: 26px; height: 26px; }
+  .card h3 { font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .card p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+  .card.feature {
+    grid-column: span 1; background: var(--green-dark); border-color: var(--green-dark); color: var(--sand);
+    position: relative; overflow: hidden;
+  }
+  .card.feature::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+  .card.feature .badge { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .card.feature .ico { background: rgba(194,142,62,0.16); color: var(--gold); }
+  .card.feature h3 { color: #fff; }
+  .card.feature p { color: rgba(247,243,234,0.8); }
+  .card.feature:hover { transform: translateY(-3px); box-shadow: 0 26px 46px -26px rgba(35,49,31,0.7); }
+
+  /* ---------- Portfólio ---------- */
+  .port { padding: clamp(64px, 9vw, 116px) 0 0; }
+  .port-head { max-width: 820px; margin-bottom: clamp(44px, 5vw, 68px); }
+  .port-head .lead { margin-top: 20px; }
+  .case { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+  .case-block { padding: clamp(44px, 6vw, 80px) 0; border-top: 1px solid var(--line); }
+  .case-media image-slot { width: 100%; aspect-ratio: 4/3; box-shadow: 0 28px 56px -32px rgba(35,49,31,0.5); }
+  .case-kicker { font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--accent-deep); margin: 0 0 14px; }
+  .case h3 { font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.015em; margin-bottom: 8px; }
+  .case .partner { font-size: 14px; font-weight: 600; color: var(--green); margin: 0 0 18px; letter-spacing: 0.01em; }
+  .case p.desc { margin: 0 0 22px; color: var(--ink-soft); font-size: 16.5px; }
+  .case .proof { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent); padding-bottom: 3px; }
+  .case .proof svg { width: 16px; height: 16px; color: var(--accent-deep); }
+  .case .proof:hover { color: var(--accent-deep); }
+
+  /* dark case variant */
+  .case-block.on-dark { background: var(--green-dark); color: var(--sand); border-top-color: var(--green-dark); }
+  .case-block.on-dark .case-kicker { color: var(--gold); }
+  .case-block.on-dark h3 { color: #fff; }
+  .case-block.on-dark .partner { color: var(--gold); }
+  .case-block.on-dark p.desc { color: rgba(247,243,234,0.82); }
+  .case-block.on-dark .proof { color: var(--sand); border-bottom-color: var(--gold); }
+  .case-block.on-dark .proof svg { color: var(--gold); }
+  .case-block.on-dark .wrap { padding-top: clamp(44px,6vw,80px); padding-bottom: clamp(44px,6vw,80px); }
+  .case.reverse .case-media { order: 2; }
+
+  /* reserved testimonial */
+  .testi { padding: clamp(56px, 7vw, 96px) 0; text-align: center; }
+  .testi .frame { max-width: 760px; margin: 0 auto; border: 1.5px dashed var(--line); border-radius: 18px; padding: clamp(36px, 5vw, 60px); background: var(--sand-2); }
+  .testi .stars { color: var(--gold); letter-spacing: 4px; font-size: 18px; margin-bottom: 18px; }
+  .testi blockquote { margin: 0 auto 24px; max-width: 28ch; font-family: "Fraunces", serif; font-style: italic; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.34; color: var(--ink); }
+  .testi .note { font-size: 13.5px; color: var(--ink-soft); letter-spacing: 0.02em; }
+
+  /* ---------- Contact ---------- */
+  footer.contact { background: var(--green-dark); color: var(--sand); }
+  footer.contact .wrap { padding-top: clamp(64px, 8vw, 110px); padding-bottom: clamp(48px, 6vw, 72px); }
+  .contact-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: end; padding-bottom: clamp(40px,5vw,64px); border-bottom: 1px solid var(--line-dark); }
+  .contact h2 { font-size: clamp(34px, 4.5vw, 58px); text-transform: uppercase; color: #fff; letter-spacing: -0.015em; }
+  .contact .lead { color: rgba(247,243,234,0.78); margin-top: 18px; max-width: 42ch; }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-start; }
+  .channels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; padding: clamp(40px,5vw,56px) 0; }
+  .channel { display: flex; gap: 16px; align-items: flex-start; }
+  .channel .ci { width: 42px; height: 42px; flex: none; border-radius: 11px; background: rgba(247,243,234,0.08); color: var(--gold); display: grid; place-items: center; }
+  .channel .ci svg { width: 21px; height: 21px; }
+  .channel .ck { font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,243,234,0.62); font-weight: 600; margin: 0 0 4px; }
+  .channel a, .channel .cv { font-size: 16.5px; color: var(--sand); text-decoration: none; font-weight: 500; word-break: break-word; }
+  .channel a:hover { color: var(--gold); }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 32px; }
+  .foot-bottom .fb { font-family: "Fraunces", serif; font-size: 19px; font-weight: 600; }
+  .foot-bottom .fb span { color: var(--gold); }
+  .foot-bottom small { color: rgba(247,243,234,0.55); font-size: 13px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .sobre-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 460px; }
+    .portrait::after { inset: 14px -14px -14px 14px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 0; }
+    .stat { padding: 4px 24px; }
+    .stat:nth-child(odd) { padding-left: 0; border-left: none; }
+    .traj-grid { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .case, .contact-top, .channels { grid-template-columns: 1fr; }
+    .case.reverse .case-media { order: 0; }
+    .case-media { max-width: 560px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .stat { border-left: none; padding-left: 0; }
+    .nav-cta .btn-ghost { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#topo" class="brand">Gabi<span>Ortiz</span></a>
+    <nav class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#areas">Áreas de atuação</a>
+      <a href="#portfolio">Portfólio</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="#contato">Contato</a>
+      <a class="btn btn-primary" href="https://wa.me/5562999570087" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.12 3.24 5.13 4.54.72.31 1.28.5 1.71.64.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12.02 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.45 9.45 0 0 1 14.68-11.7 9.4 9.4 0 0 1 2.77 6.7c0 5.2-4.24 9.43-9.45 9.43zM20.5 3.49A11.78 11.78 0 0 0 12.02 0C5.49 0 .17 5.32.17 11.86c0 2.09.55 4.13 1.59 5.93L0 24l6.37-1.67a11.8 11.8 0 0 0 5.64 1.44h.01c6.53 0 11.85-5.32 11.85-11.86a11.8 11.8 0 0 0-3.37-8.42z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</header>
+
+<a id="topo"></a>
+
+<!-- ============ SOBRE ============ -->
+<section class="sobre" id="sobre">
+  <div class="wrap sobre-grid">
+    <div class="sobre-copy">
+      <p class="eyebrow">Sobre</p>
+      <h2>Consultora em gestão financeira, governança e sustentabilidade</h2>
+      <p class="lead">Finanças com propósito: a disciplina do mercado financeiro tradicional — B3, ANBIMA, Itaú — aplicada à realidade de empresas, associações e comunidades da Chapada dos Veadeiros.</p>
+      <p class="lead">Há mais de 20 anos transformo números em decisões estratégicas, sem nunca perder de vista a essência local de cada território onde atuo.</p>
+      <div style="margin-top:30px;">
+        <a class="btn btn-primary" href="https://wa.me/5562999570087" target="_blank" rel="noopener">Falar com a Gabi</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <image-slot id="gabi-portrait" shape="rounded" radius="8" placeholder="Foto profissional da Gabriela"></image-slot>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats on-dark" aria-label="Trajetória em números">
+  <div class="wrap">
+    <p class="stats-head">Uma trajetória entre o mercado financeiro e o território</p>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="num">20<em>+</em></div>
+        <p class="lbl">Anos de experiência em finanças, governança e projetos sociais</p>
+      </div>
+      <div class="stat">
+        <div class="num">12<em>+</em></div>
+        <p class="lbl">Anos de palestras e educação financeira na Expo Money</p>
+      </div>
+      <div class="stat">
+        <div class="num">25</div>
+        <p class="lbl">Associações de moradores atendidas em regularização fundiária</p>
+      </div>
+      <div class="stat">
+        <div class="num">2020</div>
+        <p class="lbl">Início da atuação territorial na Chapada dos Veadeiros (GO)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAJETÓRIA ============ -->
+<section class="traj">
+  <div class="wrap">
+    <div class="traj-head">
+      <p class="eyebrow">Trajetória</p>
+      <h2 class="section-title">Do mercado financeiro ao território</h2>
+      <p class="lead" style="margin-top:22px;">Gabriela Ortiz Sampaio construiu sua carreira nas estruturas mais sólidas do mercado financeiro brasileiro. Depois, levou essa disciplina técnica para onde ela realmente importa: as comunidades e os negócios de impacto do Cerrado.</p>
+    </div>
+    <div class="traj-grid">
+      <div class="phase">
+        <h3><span class="ix">01</span> Mercado Financeiro</h3>
+        <p>Projetos educacionais e certificações profissionais, com palestras em feiras e universidades de todo o país — formando investidores e profissionais do setor.</p>
+        <div class="tags"><span>B3</span><span>ANBIMA</span><span>CPA10 · CPA20 · PQO</span><span>Expo Money</span><span>CONARH</span></div>
+      </div>
+      <div class="phase">
+        <h3><span class="ix">02</span> Governança e Compliance</h3>
+        <p>Membro do Comitê de Código de Conduta da ANDIMA, com foco em ética, transparência e resultados de longo prazo nas instituições do mercado.</p>
+        <div class="tags"><span>Código de Conduta</span><span>Ética</span><span>Transparência</span></div>
+      </div>
+      <div class="phase">
+        <h3><span class="ix">03</span> Projetos Sociais</h3>
+        <p>Liderança em programas de regularização fundiária com 25 associações de moradores, mediação de conflitos e fortalecimento comunitário na Terra Nova.</p>
+        <div class="tags"><span>Terra Nova</span><span>Regularização fundiária</span><span>Mediação</span></div>
+      </div>
+      <div class="phase">
+        <h3><span class="ix">04</span> Consultoria Estratégica</h3>
+        <p>Apoio a pousadas, empreendimentos turísticos e associações da Chapada dos Veadeiros, unindo gestão financeira, branding e sustentabilidade.</p>
+        <div class="tags"><span>Chapada dos Veadeiros</span><span>Turismo</span><span>Economia criativa</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote-band">
+  <div class="wrap">
+    <blockquote>Transformar números em decisões estratégicas, fortalecer lideranças locais e conectar negócios à sustentabilidade<span class="mark"> social, ambiental e de governança.</span></blockquote>
+    <p class="who">Gabriela Ortiz Sampaio</p>
+  </div>
+</section>
+
+<!-- ============ ÁREAS DE ATUAÇÃO ============ -->
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="areas-head">
+      <p class="eyebrow">Áreas de atuação</p>
+      <h2 class="section-title">Cinco frentes, um mesmo propósito</h2>
+      <p class="lead">Da rotina financeira de uma empresa à política de gênero de uma associação — disciplina institucional adaptada à realidade de cada cliente.</p>
+    </div>
+    <div class="card-grid">
+
+      <article class="card feature">
+        <p class="badge">Serviço principal</p>
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l3.5-4 3 2.5L21 7"/></svg>
+        </div>
+        <h3>Gestão Financeira</h3>
+        <p>Estruturação de rotinas financeiras e administrativas para empresas, associações e projetos, com planejamento de curto a longo prazo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 12 3l9 3.5L12 10 3 6.5Z"/><path d="M7 8.5V13c0 1.5 2.2 2.7 5 2.7s5-1.2 5-2.7V8.5"/><path d="M21 6.5V12"/></svg>
+        </div>
+        <h3>Educação Financeira Comunitária</h3>
+        <p>Palestras e formações para famílias, coletoras de sementes e grupos de economia criativa.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-5 0-7 3-9.5C18 9 20 9 20 9s-.2 3-2.5 5C15 16 12 16 12 16"/><path d="M12 21c0-4-1-6-4-8C5 11 4 8 4 8s3 0 5.5 2C12 12 12 16 12 21Z"/><path d="M12 21v-9"/></svg>
+        </div>
+        <h3>Economia Criativa e Negócios de Impacto</h3>
+        <p>Formação de preço, organização coletiva da produção e estratégias de comercialização.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7 3 13h4L5 7Z"/><path d="M19 7l-2 6h4l-2-6Z"/><path d="M8 21h8"/></svg>
+        </div>
+        <h3>Governança para o Terceiro Setor</h3>
+        <p>Regimentos internos, políticas institucionais e definição de missão e valores.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6.5" r="3"/><path d="M12 9.5v8"/><path d="M8.5 14h7"/><path d="M5 21c0-3 3-4 7-4s7 1 7 4"/></svg>
+        </div>
+        <h3>Gênero e Desenvolvimento Territorial</h3>
+        <p>Assessoria na construção de políticas de equidade de gênero integradas à conservação ambiental.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFÓLIO ============ -->
+<section class="port" id="portfolio">
+  <div class="wrap port-head">
+    <p class="eyebrow">Portfólio</p>
+    <h2 class="section-title">Cases que comprovam o impacto</h2>
+    <p class="lead">Projetos documentados ao lado de associações, conselhos e instituições parceiras — prova institucional para parcerias e editais como CEPF, IEB e WWF.</p>
+  </div>
+
+  <!-- Case 1 — sand -->
+  <div class="case-block">
+    <div class="wrap case">
+      <div class="case-media">
+        <image-slot id="case-cerrado" shape="rounded" radius="8" placeholder="Capa do e-book ou fotos do projeto Cerrado de Pé"></image-slot>
+      </div>
+      <div class="case-copy">
+        <p class="case-kicker">Cerrado de Pé · Política de gênero</p>
+        <h3>E-book “Raízes e Vozes”</h3>
+        <p class="partner">Associação Cerrado de Pé</p>
+        <p class="desc">Construção e documentação da política de gênero da associação, traduzindo escuta comunitária em um material institucional de referência para coletoras de sementes e lideranças femininas.</p>
+        <a class="proof" href="#contato">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h11l3 3v13.5a.5.5 0 0 1-.5.5H6a2 2 0 0 1-2-2Z"/><path d="M8 8h7M8 12h7M8 16h4"/></svg>
+          Material documentado disponível
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 2 — dark, reversed -->
+  <div class="case-block on-dark">
+    <div class="wrap case reverse">
+      <div class="case-media">
+        <image-slot id="case-tecendo" shape="rounded" radius="8" placeholder="Fotos do projeto Tecendo Sonhos"></image-slot>
+      </div>
+      <div class="case-copy">
+        <p class="case-kicker">Economia criativa · Comunidades</p>
+        <h3>Tecendo Sonhos, Fortalecendo Vínculos</h3>
+        <p class="partner">Economia criativa comunitária</p>
+        <p class="desc">Apoio à organização coletiva da produção e à comercialização de grupos da economia criativa, fortalecendo vínculos comunitários e gerando autonomia financeira para as famílias envolvidas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 3 — sand -->
+  <div class="case-block">
+    <div class="wrap case">
+      <div class="case-media">
+        <image-slot id="case-wwf" shape="rounded" radius="8" placeholder="Imagem da parceria WWF-Brasil"></image-slot>
+      </div>
+      <div class="case-copy">
+        <p class="case-kicker">Governança · Instituição parceira</p>
+        <h3>WWF-Brasil</h3>
+        <p class="partner">Consultoria pontual em governança</p>
+        <p class="desc">Consultoria de governança junto a uma das maiores instituições socioambientais do país — reforçando o porte institucional e a confiança técnica reconhecida por grandes financiadores.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 4 — dark, reversed -->
+  <div class="case-block on-dark">
+    <div class="wrap case reverse">
+      <div class="case-media">
+        <image-slot id="case-conselho" shape="rounded" radius="8" placeholder="Foto do Conselho da Mulher / Alto Paraíso"></image-slot>
+      </div>
+      <div class="case-copy">
+        <p class="case-kicker">Protagonismo feminino · Política pública</p>
+        <h3>Conselho Municipal dos Direitos da Mulher</h3>
+        <p class="partner">Alto Paraíso de Goiás</p>
+        <p class="desc">Atuação em conselho de protagonismo feminino, conectando políticas públicas de equidade de gênero ao desenvolvimento territorial e à conservação do Cerrado.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reserved testimonial -->
+  <div class="case-block" style="border-top:1px solid var(--line);">
+    <div class="testi wrap">
+      <div class="frame">
+        <div class="stars">★★★★★</div>
+        <blockquote>“Ela não impõe modelos. Adapta a disciplina financeira à nossa realidade — e isso faz toda a diferença.”</blockquote>
+        <p class="note">Espaço reservado para depoimentos de clientes e parceiros</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<footer class="contact" id="contato">
+  <div class="wrap">
+    <div class="contact-top">
+      <div>
+        <p class="eyebrow" style="color:var(--gold);">Vamos conversar</p>
+        <h2>Finanças com propósito para o seu projeto</h2>
+        <p class="lead">Conte sua necessidade pelo WhatsApp ou e-mail. Atendo empresas, associações e instituições que querem profissionalizar a gestão sem perder o propósito.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://wa.me/5562999570087" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.12 3.24 5.13 4.54.72.31 1.28.5 1.71.64.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12.02 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.45 9.45 0 0 1 14.68-11.7 9.4 9.4 0 0 1 2.77 6.7c0 5.2-4.24 9.43-9.45 9.43z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="mailto:gabiortiz9@gmail.com">Enviar e-mail</a>
+      </div>
+    </div>
+
+    <div class="channels">
+      <div class="channel">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.47 1.08 2.9 1.23 3.1.15.2 2.12 3.24 5.13 4.54.72.31 1.28.5 1.71.64.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg></div>
+        <div>
+          <p class="ck">WhatsApp</p>
+          <a href="https://wa.me/5562999570087" target="_blank" rel="noopener">(62) 9 9957-0087</a>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg></div>
+        <div>
+          <p class="ck">E-mail</p>
+          <a href="mailto:gabiortiz9@gmail.com">gabiortiz9@gmail.com</a>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+        <div>
+          <p class="ck">Instagram</p>
+          <a href="https://instagram.com/" target="_blank" rel="noopener">@gabiortiz</a>
+        </div>
+      </div>
+      <div class="channel">
+        <div class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.25 8h4.5v13.5H.25V8zm7.25 0h4.32v1.85h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9v7.09h-4.5v-6.29c0-1.5-.03-3.43-2.09-3.43-2.09 0-2.41 1.63-2.41 3.32v6.4h-4.5V8z"/></svg></div>
+        <div>
+          <p class="ck">LinkedIn</p>
+          <a href="https://linkedin.com/in/gabriela-ortizsampaio-77a1421b0" target="_blank" rel="noopener">in/gabriela-ortizsampaio</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div class="fb">Gabi<span>Ortiz</span> · Consultoria de Negócios</div>
+      <small>© 2026 Gabriela Ortiz Sampaio · Chapada dos Veadeiros, GO · Finanças com propósito</small>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

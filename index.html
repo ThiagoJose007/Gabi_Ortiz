@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gabi Ortiz — Finanças com propósito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="fig/fig-tokens.css" />
+<link rel="stylesheet" href="fig/fig-typography.css" />
+<link rel="stylesheet" href="fig/fig-assets.css" />
+<style>
+  /* ===== Paleta design.md (areia / cerrado / dourado) sobre os tokens do Figma ===== */
+  :root {
+    --color-scheme-1-background: #F7F3EA;   /* areia / off-white base */
+    --color-scheme-1-text:       #2D3B2E;   /* verde-cerrado escuro (texto âncora) */
+    --color-scheme-1-foreground: #FFFFFF;   /* fundo dos cards (off-white claro) */
+    --color-scheme-1-border:     #D8D4C4;   /* linhas/separadores sutis */
+    --color-white:               #FFFFFF;   /* fundo de botões secundários */
+    --color-neutral-darkest:     #2D3B2E;   /* texto de botões secundários */
+    --color-neutral-darker:      #FFFFFF;
+    --color-neutral-lighter:     #D8D4C4;   /* borda de botões secundários */
+    --color-haiti:               #C28E3E;   /* CTA dourado */
+    --color-haiti-dark:          #9A6E26;   /* borda/sombra do CTA */
+    --color-cta-text:            #2A2208;   /* texto escuro sobre o dourado */
+  }
+  /* Faixas alternadas em verde-escuro (Butterfly/Fun Parque rhythm) */
+  .scheme-dark {
+    --color-scheme-1-background: #23311F;   /* verde escuro sólido */
+    --color-scheme-1-text:       #F7F3EA;   /* texto em areia */
+    --color-scheme-1-foreground: #2C3D26;   /* cards sobre fundo escuro */
+    --color-scheme-1-border:     rgba(247,243,234,0.18);
+    --color-neutral-darkest:     #F7F3EA;   /* texto de botões transparentes/link sobre fundo escuro */
+    --color-neutral-lighter:     rgba(247,243,234,0.28);
+  }
+  html, body { margin: 0; padding: 0; background: #F7F3EA; }
+
+  /* === Áreas de Atuação: cards sem corte + seção centralizada === */
+  #frame > div > div:nth-child(4) [style*="height: 881px"] { height: auto !important; }
+  #frame > div > div:nth-child(4) [style*="border-radius: 8px"] { overflow: visible !important; }
+  #frame > div > div:nth-child(4) span[style*="font-size: 40px"] { font-size: 26px !important; line-height: 1.18 !important; }
+  #stage {
+    width: 100%;
+    background: #F7F3EA;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #scaler { width: 1440px; transform-origin: top center; }
+  /* The materialized frame uses absolute positioning at 1440px; keep fonts crisp */
+  #scaler * { -webkit-font-smoothing: antialiased; }
+</style>
+</head>
+<body>
+  <div id="stage">
+    <div id="scaler"><div id="frame"></div></div>
+  </div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="fig/Components.bundle.js"></script>
+  <script>
+    (function () {
+      var frame = document.getElementById('frame');
+      var root = ReactDOM.createRoot(frame);
+      root.render(React.createElement(window.InCioDesktop));
+
+      var stage = document.getElementById('stage');
+      var scaler = document.getElementById('scaler');
+      var BASE_W = 1440;
+
+      // design.md: alternância areia ↔ verde-escuro em faixas escolhidas
+      function applyScheme() {
+        var rootEl = frame.firstElementChild;
+        if (!rootEl) return;
+        var dark = [2, 5, 7]; // Trajetória, Depoimentos, Rodapé
+        var kids = rootEl.children;
+        for (var i = 0; i < kids.length; i++) {
+          if (dark.indexOf(i) > -1) kids[i].classList.add('scheme-dark');
+        }
+      }
+      applyScheme();
+
+      function fit() {
+        applyScheme();
+        var s = Math.min(1, window.innerWidth / BASE_W);
+        scaler.style.transform = 'scale(' + s + ')';
+        // height of the rendered frame in its own 1440 coordinate space
+        var h = frame.firstChild ? frame.firstChild.offsetHeight : scaler.scrollHeight;
+        if (h) { stage.style.height = (h * s) + 'px'; }
+      }
+
+      window.addEventListener('resize', fit);
+      // fit after mount + after fonts/images settle
+      requestAnimationFrame(fit);
+      setTimeout(fit, 200);
+      setTimeout(fit, 800);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fit); }
+      window.addEventListener('load', fit);
+    })();
+  </script>
+</body>
+</html>
